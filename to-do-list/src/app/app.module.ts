@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TasksService } from './tasks.service';
+import { StorageService } from './storage.service';
 
 
 import { AppComponent } from './app.component';
@@ -15,7 +16,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [TasksService],
+  providers: [TasksService, StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

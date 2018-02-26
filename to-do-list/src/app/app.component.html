@@ -7,7 +7,7 @@
 </div>
    <div class="input-group">
        <span class="input-group-addon">Task:</span>
-       <input [(ngModel)]="taskService.task" type="text" class="form-control" id="myInput" placeholder="Enter action here...">
+       <input (keydown.enter)="taskService.addTask(taskService.task)" [(ngModel)]="taskService.task" type="text" class="form-control" id="myInput" placeholder="Enter action here...">
        <button (click)="taskService.addTask(taskService.task)">Add</button>
    </div>
    <br>
