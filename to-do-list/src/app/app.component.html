@@ -1,0 +1,21 @@
+<h2 class="cover-heading">To Do List</h2>
+<div class="lead">
+  <p id="banner">Awesome task app.</p>
+  <div class="progress" *ngIf="!disableClearAllTasks()">
+      <div class="progress-bar bg-success" role="progressbar" [attr.aria-valuenow]="completedTasks()" aria-valuemin="0" [style.width]="tasksTotalProgress()" [attr.aria-valuemax]="taskService.tasks.length">{{tasksTotalProgress()}}</div>
+  </div><br>
+</div>
+   <div class="input-group">
+       <span class="input-group-addon">Task:</span>
+       <input [(ngModel)]="taskService.task" type="text" class="form-control" id="myInput" placeholder="Enter action here...">
+       <button (click)="taskService.addTask(taskService.task)">Add</button>
+   </div>
+   <br>
+   <ul id="todo-list" class="list-group">
+       <!-- <li class="list-group-item">Sample1</li> -->
+       <!-- <li class="list-group-item list-group-item-success">Sample2</li> -->
+       <li (click)="taskService.toggleCompleted(task)" *ngFor="let task of taskService.tasks" class="list-group-item" [class.list-group-item-success]="task.completed">{{ task.text }}</li>
+   </ul>
+   <br>
+   <button [disabled]="completedTasks() < 1" type="button" class="btn btn-success" id="clearComplete" (click)="taskService.clearCompletedTasks()">Clear Completed</button>
+   <button [disabled]="disableClearAllTasks()" type="button" class="btn btn-danger" id="clearAll" (click)="taskService.clearAllTasks()">Clear All</button>
